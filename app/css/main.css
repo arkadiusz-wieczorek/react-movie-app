@@ -1,0 +1,19 @@
+html{
+	font-size: 1.5em;
+	color: #333;
+	font-family: 'Open Sans', sans-serif;
+}
+
+body{
+	padding: 1rem;
+}
+
+* {
+	box-sizing: border-box;
+	line-height: 1rem;
+	font-size: 0.666666rem;
+	margin:0;
+	text-rendering: optimizelegibility;
+	font-smooth: auto;
+	-webkit-font-smoothing: auto;
+}
