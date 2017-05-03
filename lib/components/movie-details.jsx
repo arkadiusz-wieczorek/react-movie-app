@@ -7,13 +7,11 @@ class MovieDetails extends React.Component {
 	componentDidMount() {
 		console.log(this.props.match.params.movie_id);
 	}
-	componentWillReceiveProps() {}
-	componentWillUpdate() {
-		// console.log(this.props.match.params.movie_id);
-		// console.log(window.location.hash);
+	componentWillReceiveProps(nextProps) {
+		console.log(nextProps.match.params.movie_id);
 	}
 	render() {
-		return <div>MovieDetails</div>;
+		return <div>MovieDetails: {this.props.match.params.movie_id}</div>;
 	}
 }
 export default MovieDetails;

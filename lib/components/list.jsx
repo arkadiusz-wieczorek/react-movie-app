@@ -10,7 +10,12 @@ class MoviesList extends React.Component {
 	}
 	componentWillReceiveProps() {}
 	render() {
-		return <div>MoviesList</div>;
+		return (
+			<div>
+				MoviesList:
+				{JSON.stringify(this.props.movies)}
+			</div>
+		);
 	}
 }
 export default MoviesList;

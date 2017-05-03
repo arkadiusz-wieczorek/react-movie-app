@@ -2,18 +2,17 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import HttpWrapper from "./modules/http-wrapper";
 import Routes from "./routes.jsx";
-import { Link } from "react-router-dom";
+import { HashRouter as Router, Link } from "react-router-dom";
+import createHistory from "history/createBrowserHistory";
+const history = createHistory();
 
 class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			query: "",
-			data: {
-				page: 0,
-				total_results: 0,
-				total_pages: 0,
-			},
+			data: { page: 0, total_results: 0, total_pages: 0 },
+			is_loading: false,
 			movies: [],
 		};
 		this.handleChange = this.handleChange.bind(this);
@@ -29,15 +28,15 @@ class App extends React.Component {
 	searchMovies(query) {
 		HttpWrapper.getMovies(query)
 			.then(res => {
-				console.log(res.data.results);
-				let data = {
-					page: res.data.page,
-					total_results: res.data.total_results,
-					total_pages: res.data.total_pages,
-				};
-				let movies = res.data.results;
-
-				this.setState({ data: data, movies: movies });
+				this.setState({
+					data: {
+						page: res.data.page,
+						total_results: res.data.total_results,
+						total_pages: res.data.total_pages,
+					},
+					movies: res.data.results,
+					is_loading: false,
+				});
 			})
 			.catch(error => {
 				console.log(error);
@@ -48,20 +47,28 @@ class App extends React.Component {
 		this.setState({ query: event.target.value });
 	}
 	enterKeyUp(event) {
-		if (event.keyCode === 13) this.searchMovies(this.state.query);
+		if (event.keyCode === 13) {
+			this.setState({ is_loading: true });
+			this.searchMovies(this.state.query);
+			document.location.hash = "/movies";
+		}
 	}
 	render() {
 		return (
-			<div>
-				<input
-					value={this.state.value}
-					onChange={this.handleChange}
-					onKeyUp={this.enterKeyUp}
-					type="text"
-					placeholder="Jakiego filmu szukasz?"
-				/>
-				<Routes movies={this.state.movies} />
-			</div>
+			<Router>
+				<div>
+					<input
+						value={this.state.value}
+						onChange={this.handleChange}
+						onKeyUp={this.enterKeyUp}
+						type="text"
+						placeholder="Jakiego filmu szukasz?"
+					/>
+					<Link to="2222">2222</Link>
+					<Link to="aaaa">aaaa</Link>
+					<Routes movies={this.state.movies} />
+				</div>
+			</Router>
 		);
 	}
 }
