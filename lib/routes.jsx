@@ -8,7 +8,7 @@ const Routes = props => (
 		<Switch>
 			<Route
 				path="/movies"
-				component={() => <MoviesList movies={props.movies} />}
+				render={() => <MoviesList movies={props.movies} />}
 			/>
 			<Route path="/:movie_id" component={MovieDetails} />
 		</Switch>

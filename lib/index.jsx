@@ -8,31 +8,58 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			movies: {},
-			page: 0,
+			query: "",
+			data: {
+				page: 0,
+				total_results: 0,
+				total_pages: 0,
+			},
+			movies: [],
 		};
+		this.handleChange = this.handleChange.bind(this);
+		this.searchMovies = this.searchMovies.bind(this);
+		this.enterKeyUp = this.enterKeyUp.bind(this);
 	}
 
 	componentDidMount() {
-		HttpWrapper.getMovies("video")
-			.then(response => {
-				this.setState({
-					movies: response.data,
-				});
-			})
-			.catch(error => {
-				console.log(error);
-			});
 		// HttpWrapper.getMovieDetails(211478).then(response => {
 		// 	console.log(response.data);
 		// });
 	}
+	searchMovies(query) {
+		HttpWrapper.getMovies(query)
+			.then(res => {
+				console.log(res.data.results);
+				let data = {
+					page: res.data.page,
+					total_results: res.data.total_results,
+					total_pages: res.data.total_pages,
+				};
+				let movies = res.data.results;
 
+				this.setState({ data: data, movies: movies });
+			})
+			.catch(error => {
+				console.log(error);
+			});
+	}
+
+	handleChange(event) {
+		this.setState({ query: event.target.value });
+	}
+	enterKeyUp(event) {
+		if (event.keyCode === 13) this.searchMovies(this.state.query);
+	}
 	render() {
 		return (
 			<div>
-				App
-
+				<input
+					value={this.state.value}
+					onChange={this.handleChange}
+					onKeyUp={this.enterKeyUp}
+					type="text"
+					placeholder="Jakiego filmu szukasz?"
+				/>
 				<Routes movies={this.state.movies} />
 			</div>
 		);

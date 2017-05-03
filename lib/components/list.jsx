@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 
 class MoviesList extends React.Component {
 	constructor(props) {
@@ -6,7 +6,9 @@ class MoviesList extends React.Component {
 	}
 	componentDidMount() {
 		console.log(this.props);
+		console.log("mount");
 	}
+	componentWillReceiveProps() {}
 	render() {
 		return <div>MoviesList</div>;
 	}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 
 class MovieDetails extends React.Component {
 	constructor(props) {
@@ -7,6 +7,7 @@ class MovieDetails extends React.Component {
 	componentDidMount() {
 		console.log(this.props.match.params.movie_id);
 	}
+	componentWillReceiveProps() {}
 	componentWillUpdate() {
 		// console.log(this.props.match.params.movie_id);
 		// console.log(window.location.hash);
