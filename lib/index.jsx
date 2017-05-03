@@ -57,7 +57,7 @@ class App extends React.Component {
 				this.searchMovies(this.state.query, page + 1);
 			}
 		} else {
-			if (page - 1 >= 0 && this.state.query !== "") {
+			if (page - 1 > 0 && this.state.query !== "") {
 				this.searchMovies(this.state.query, page - 1);
 			}
 		}
