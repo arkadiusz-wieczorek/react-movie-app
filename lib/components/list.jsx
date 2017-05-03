@@ -1,20 +1,21 @@
 import React, { Component } from "react";
+import MoviesListElement from "./list-element.jsx";
 
 class MoviesList extends React.Component {
 	constructor(props) {
 		super(props);
 	}
-	componentDidMount() {
-		console.log(this.props);
-		console.log("mount");
-	}
-	componentWillReceiveProps() {}
+
 	render() {
 		return (
 			<div>
 				{this.props.is_loading
 					? <div>MoviesList: is loading</div>
-					: <div>MoviesList:{JSON.stringify(this.props.movies)}</div>}
+					: <ul>
+							{this.props.movies.map(movie => (
+								<MoviesListElement movie={movie} key={movie.id} />
+							))}
+						</ul>}
 			</div>
 		);
 	}
