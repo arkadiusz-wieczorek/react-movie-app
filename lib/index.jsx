@@ -3,28 +3,21 @@ import ReactDOM from "react-dom";
 import HttpWrapper from "./modules/http-wrapper";
 import Routes from "./routes.jsx";
 import { HashRouter as Router, Link } from "react-router-dom";
-import createHistory from "history/createBrowserHistory";
-const history = createHistory();
 
 class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			query: "",
 			data: { page: 0, total_results: 0, total_pages: 0 },
-			is_loading: false,
 			movies: [],
+			query: "",
+			is_loading: false,
 		};
 		this.handleChange = this.handleChange.bind(this);
 		this.searchMovies = this.searchMovies.bind(this);
 		this.enterKeyUp = this.enterKeyUp.bind(this);
 	}
 
-	componentDidMount() {
-		// HttpWrapper.getMovieDetails(211478).then(response => {
-		// 	console.log(response.data);
-		// });
-	}
 	searchMovies(query) {
 		HttpWrapper.getMovies(query)
 			.then(res => {
@@ -65,8 +58,14 @@ class App extends React.Component {
 						placeholder="Jakiego filmu szukasz?"
 					/>
 					<Link to="2222">2222</Link>
-					<Link to="aaaa">aaaa</Link>
-					<Routes movies={this.state.movies} />
+					<Link to="2223">2223</Link>
+					<div className="content">
+
+						<Routes
+							movies={this.state.movies}
+							is_loading={this.state.is_loading}
+						/>
+					</div>
 				</div>
 			</Router>
 		);
