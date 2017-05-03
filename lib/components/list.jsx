@@ -12,8 +12,9 @@ class MoviesList extends React.Component {
 	render() {
 		return (
 			<div>
-				MoviesList:
-				{JSON.stringify(this.props.movies)}
+				{this.props.is_loading
+					? <div>MoviesList: is loading</div>
+					: <div>MoviesList:{JSON.stringify(this.props.movies)}</div>}
 			</div>
 		);
 	}
