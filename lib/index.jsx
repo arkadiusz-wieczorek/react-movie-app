@@ -8,7 +8,7 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			data: { page: 0, total_results: 0, total_pages: 0 },
+			metadata: { page: 0, total_results: 0, total_pages: 0 },
 			movies: [],
 			query: "",
 			is_loading: false,
@@ -24,7 +24,7 @@ class App extends React.Component {
 		HttpWrapper.getMovies(query, page)
 			.then(res => {
 				this.setState({
-					data: {
+					metadata: {
 						page: res.data.page,
 						total_results: res.data.total_results,
 						total_pages: res.data.total_pages,
@@ -34,6 +34,7 @@ class App extends React.Component {
 				});
 			})
 			.catch(error => {
+				alert("Wystąpił błąd, spróbuj ponownie.");
 				console.log(error);
 			});
 	}
@@ -41,26 +42,21 @@ class App extends React.Component {
 	sortMoviesByTitle() {
 		let sorted_movies = this.state.movies.sort((a, b) => {
 			let titleA = a.title.toLowerCase(), titleB = b.title.toLowerCase();
-			if (titleA < titleB) return -1;
-			if (titleA > titleB) return 1;
-			return 0;
+			return titleA < titleB ? -1 : titleA === titleB ? 0 : 1;
 		});
 		this.setState({ movies: sorted_movies });
 	}
 
 	moveToPage(to_next) {
-		let page = this.state.data.page;
-		const total_pages = this.state.data.total_pages;
-		console.log(total_pages);
-		if (to_next) {
-			if (page + 1 <= total_pages && this.state.query !== "") {
-				this.searchMovies(this.state.query, page + 1);
-			}
-		} else {
-			if (page - 1 > 0 && this.state.query !== "") {
-				this.searchMovies(this.state.query, page - 1);
-			}
-		}
+		let page = this.state.metadata.page;
+
+		to_next && this.state.query !== ""
+			? page + 1 <= this.state.metadata.total_pages
+					? this.searchMovies(this.state.query, page + 1)
+					: null
+			: page - 1 > 0
+					? this.searchMovies(this.state.query, page - 1)
+					: null;
 	}
 
 	handleChange(event) {
