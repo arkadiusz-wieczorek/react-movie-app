@@ -2,6 +2,9 @@ import React from "react";
 import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
 import MoviesList from "./components/list.jsx";
 import MovieDetailsWrapper from "./components/movie-details-wrapper.jsx";
+import MovieDetailsPure from "./components/movie-details-pure.jsx";
+
+const MovieDetails = MovieDetailsWrapper(MovieDetailsPure);
 
 const Routes = props => (
 	<Switch>
@@ -10,7 +13,9 @@ const Routes = props => (
 			render={() => (
 				<MoviesList
 					movies={props.movies}
-					is_loading={props.is_loading}
+					loaded={props.loaded}
+					sorted={props.sorted}
+					metadata={props.metadata}
 					sortMoviesByTitle={props.sortMoviesByTitle}
 					moveToPage={props.moveToPage}
 				/>
@@ -19,7 +24,7 @@ const Routes = props => (
 		<Route
 			path="/:movie_id"
 			render={rest => (
-				<MovieDetailsWrapper movies={props.movies} match={rest.match} />
+				<MovieDetails movies={props.movies} match={rest.match} />
 			)}
 		/>
 	</Switch>
