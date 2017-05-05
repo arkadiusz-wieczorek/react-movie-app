@@ -79,7 +79,12 @@ export default function(MovieDisplayComponent) {
 		render() {
 			return (
 				<div>
-					MoviesDetailsWrapper
+					<button
+						onClick={() => (document.location.hash = "/movies")}
+					>
+						Go back
+					</button>
+
 					<MovieDisplayComponent
 						{...this.state}
 						id={this.getMovieId()}
