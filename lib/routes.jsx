@@ -1,7 +1,7 @@
 import React from "react";
 import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
 import MoviesList from "./components/list.jsx";
-import MovieDetails from "./components/movie-details.jsx";
+import MovieDetailsWrapper from "./components/movie-details-wrapper.jsx";
 
 const Routes = props => (
 	<Switch>
@@ -14,7 +14,16 @@ const Routes = props => (
 				/>
 			)}
 		/>
-		<Route path="/:movie_id" component={MovieDetails} />
+		<Route
+			path="/:movie_id"
+			render={rest => (
+				<MovieDetailsWrapper
+					movies={props.movies}
+					is_loading={props.is_loading}
+					match={rest.match}
+				/>
+			)}
+		/>
 	</Switch>
 );
 

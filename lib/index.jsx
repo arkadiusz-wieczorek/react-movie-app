@@ -82,20 +82,16 @@ class App extends React.Component {
 					<button onClick={this.sortMoviesByTitle}>
 						Sort movies
 					</button>
-					{/* <Link to="2222">2222</Link>
-					<Link to="2223">2223</Link> */}
 					<button onClick={this.moveToPage.bind(this, false)}>
 						Prev page
 					</button>
 					<button onClick={this.moveToPage.bind(this, true)}>
 						Next page
 					</button>
-					<div className="content">
-						<Routes
-							movies={this.state.movies}
-							is_loading={this.state.is_loading}
-						/>
-					</div>
+					<Routes
+						movies={this.state.movies}
+						is_loading={this.state.is_loading}
+					/>
 				</div>
 			</Router>
 		);
