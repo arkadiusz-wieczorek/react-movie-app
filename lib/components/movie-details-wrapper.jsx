@@ -8,7 +8,6 @@ export default function(MovieDisplayComponent) {
 			super(props);
 			this.state = {
 				poster_path: "",
-				// id: this.getMovieId(),
 				title: "",
 				release_date: "",
 				vote_count: null,
@@ -45,7 +44,6 @@ export default function(MovieDisplayComponent) {
 			HttpWrapper.getMovieDetails(id).then(response => {
 				merged_object = this.mergeObjectWithState(response.data);
 				merged_object.loaded = true;
-				console.log(this.state);
 				this.setState(merged_object);
 			});
 		}
@@ -63,8 +61,7 @@ export default function(MovieDisplayComponent) {
 		componentWillReceiveProps(nextProps) {
 			const next_id = nextProps.match.params.movie_id;
 			if (this.getMovieId() !== next_id) {
-				this.getMovie(next_id);
-				// setTimeout(() => this.getMovie(), 0); //next tick
+				this.getMovie(next_id); // or setTimeout(() => this.getMovie(), 0); //next tick
 			}
 		}
 
@@ -74,8 +71,8 @@ export default function(MovieDisplayComponent) {
 
 		shouldComponentUpdate(nextProps, nextState) {
 			return (
-				nextState.loaded !== this.state.loaded ||
-				nextProps.match.params.movie_id !== this.getMovieId()
+				nextState.loaded === this.state.loaded ||
+				nextProps.match.params.movie_id == this.getMovieId()
 			);
 		}
 
@@ -83,7 +80,10 @@ export default function(MovieDisplayComponent) {
 			return (
 				<div>
 					MoviesDetailsWrapper
-					<MovieDisplayComponent {...this.state} />
+					<MovieDisplayComponent
+						{...this.state}
+						id={this.getMovieId()}
+					/>
 				</div>
 			);
 		}
