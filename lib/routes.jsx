@@ -17,11 +17,7 @@ const Routes = props => (
 		<Route
 			path="/:movie_id"
 			render={rest => (
-				<MovieDetailsWrapper
-					movies={props.movies}
-					is_loading={props.is_loading}
-					match={rest.match}
-				/>
+				<MovieDetailsWrapper movies={props.movies} match={rest.match} />
 			)}
 		/>
 	</Switch>
