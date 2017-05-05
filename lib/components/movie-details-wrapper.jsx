@@ -37,7 +37,6 @@ class MovieDetailsWrapper extends React.Component {
 
 		return movie_state;
 	}
-
 	componentDidMount() {
 		let merged_object, movie = this.getMovie();
 		if (movie !== null) {
@@ -51,9 +50,10 @@ class MovieDetailsWrapper extends React.Component {
 		});
 	}
 
-	// shouldComponentUpdate(nextProps, nextState) {
-	// 	nextState !== this.state ? true : false;
-	// }
+	shouldComponentUpdate(nextProps, nextState) {
+		if (nextState !== this.state) return true;
+		else return false;
+	}
 
 	render() {
 		return (
