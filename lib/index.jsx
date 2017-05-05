@@ -14,9 +14,7 @@ class App extends React.Component {
 			is_loading: false,
 		};
 		this.handleChange = this.handleChange.bind(this);
-		this.searchMovies = this.searchMovies.bind(this);
 		this.enterKeyUp = this.enterKeyUp.bind(this);
-		this.sortMoviesByTitle = this.sortMoviesByTitle.bind(this);
 	}
 
 	searchMovies(query, page) {
@@ -50,13 +48,16 @@ class App extends React.Component {
 	moveToPage(to_next) {
 		let page = this.state.metadata.page;
 
-		to_next && this.state.query !== ""
-			? page + 1 <= this.state.metadata.total_pages
-					? this.searchMovies(this.state.query, page + 1)
-					: null
-			: page - 1 > 0
-					? this.searchMovies(this.state.query, page - 1)
-					: null;
+		if (to_next && this.state.query !== "") {
+			page + 1 <= this.state.metadata.total_pages &&
+				!this.state.is_loading
+				? this.searchMovies(this.state.query, page + 1)
+				: null;
+		} else {
+			page - 1 > 0 && !this.state.is_loading
+				? this.searchMovies(this.state.query, page - 1)
+				: null;
+		}
 	}
 
 	handleChange(event) {
@@ -73,24 +74,17 @@ class App extends React.Component {
 			<Router>
 				<div>
 					<input
-						value={this.state.value}
+						value={this.state.query}
 						onChange={this.handleChange}
 						onKeyUp={this.enterKeyUp}
 						type="text"
 						placeholder="Jakiego filmu szukasz?"
 					/>
-					<button onClick={this.sortMoviesByTitle}>
-						Sort movies
-					</button>
-					<button onClick={this.moveToPage.bind(this, false)}>
-						Prev page
-					</button>
-					<button onClick={this.moveToPage.bind(this, true)}>
-						Next page
-					</button>
 					<Routes
 						movies={this.state.movies}
 						is_loading={this.state.is_loading}
+						sortMoviesByTitle={this.sortMoviesByTitle.bind(this)}
+						moveToPage={this.moveToPage.bind(this)}
 					/>
 				</div>
 			</Router>

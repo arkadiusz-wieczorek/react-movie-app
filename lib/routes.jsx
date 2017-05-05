@@ -11,6 +11,8 @@ const Routes = props => (
 				<MoviesList
 					movies={props.movies}
 					is_loading={props.is_loading}
+					sortMoviesByTitle={props.sortMoviesByTitle}
+					moveToPage={props.moveToPage}
 				/>
 			)}
 		/>
