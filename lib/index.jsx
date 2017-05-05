@@ -11,14 +11,15 @@ class App extends React.Component {
 			metadata: { page: 0, total_results: 0, total_pages: 0 },
 			movies: [],
 			query: "",
-			is_loading: false,
+			loaded: true,
+			sorted: false,
 		};
 		this.handleChange = this.handleChange.bind(this);
 		this.enterKeyUp = this.enterKeyUp.bind(this);
 	}
 
 	searchMovies(query, page) {
-		this.setState({ is_loading: true });
+		this.setState({ loaded: false });
 		HttpWrapper.getMovies(query, page)
 			.then(res => {
 				this.setState({
@@ -28,7 +29,8 @@ class App extends React.Component {
 						total_pages: res.data.total_pages,
 					},
 					movies: res.data.results,
-					is_loading: false,
+					loaded: true,
+					sorted: false,
 				});
 			})
 			.catch(error => {
@@ -42,22 +44,15 @@ class App extends React.Component {
 			let titleA = a.title.toLowerCase(), titleB = b.title.toLowerCase();
 			return titleA < titleB ? -1 : titleA === titleB ? 0 : 1;
 		});
-		this.setState({ movies: sorted_movies });
+		this.setState({ movies: sorted_movies, sorted: true });
 	}
 
-	moveToPage(to_next) {
-		let page = this.state.metadata.page;
-
-		if (to_next && this.state.query !== "") {
-			page + 1 <= this.state.metadata.total_pages &&
-				!this.state.is_loading
-				? this.searchMovies(this.state.query, page + 1)
-				: null;
-		} else {
-			page - 1 > 0 && !this.state.is_loading
-				? this.searchMovies(this.state.query, page - 1)
-				: null;
-		}
+	moveToPage(offset) {
+		let new_page = Math.min(
+			Math.max(this.state.metadata.page + offset, 1),
+			this.state.metadata.total_pages
+		);
+		this.searchMovies(this.state.query, new_page);
 	}
 
 	handleChange(event) {
@@ -81,8 +76,7 @@ class App extends React.Component {
 						placeholder="Jakiego filmu szukasz?"
 					/>
 					<Routes
-						movies={this.state.movies}
-						is_loading={this.state.is_loading}
+						{...this.state}
 						sortMoviesByTitle={this.sortMoviesByTitle.bind(this)}
 						moveToPage={this.moveToPage.bind(this)}
 					/>
