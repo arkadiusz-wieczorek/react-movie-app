@@ -9,11 +9,12 @@ class MoviesList extends React.Component {
 	render() {
 		return (
 			<div>
-				{!this.props.sorted
-					? <button onClick={this.props.sortMoviesByTitle}>
-							Sort movies
-						</button>
-					: <p>Posortowano</p>}
+				<button
+					disabled={this.props.sorted}
+					onClick={this.props.sortMoviesByTitle}
+				>
+					Sort movies
+				</button>
 
 				<button
 					disabled={
