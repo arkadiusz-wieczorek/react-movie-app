@@ -35,12 +35,12 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1920"
-     inkscape:window-height="1056"
+     inkscape:window-width="1600"
+     inkscape:window-height="876"
      id="namedview11"
      showgrid="false"
      inkscape:zoom="0.236"
-     inkscape:cx="-95.338979"
+     inkscape:cx="-726.69491"
      inkscape:cy="500"
      inkscape:window-x="0"
      inkscape:window-y="24"
@@ -63,7 +63,7 @@
      fill="#FFFFFF"
      d="M473.663,261.685c-114.419,0-207.157,92.749-207.157,207.146c0,114.396,92.738,207.155,207.157,207.155  c114.396,0,207.111-92.759,207.111-207.155C680.774,354.433,588.059,261.685,473.663,261.685z M473.663,630.753  c-85.49,0-154.762-72.49-154.762-161.922c0-89.423,69.271-161.912,154.762-161.912c85.445,0,154.738,72.489,154.738,161.912  C628.401,558.263,559.108,630.753,473.663,630.753z"
      id="path7"
-     style="fill:#e8e8e3;fill-opacity:1" /><line
+     style="fill:#8b9fa7;fill-opacity:1" /><line
      fill="#FFFFFF"
      stroke="#FFFFFF"
      stroke-width="50"
@@ -74,4 +74,4 @@
      x2="733.457"
      y2="761.74"
      id="line9"
-     style="fill:#e8e8e3;stroke:#e8e8e3;stroke-opacity:1;fill-opacity:1" /></svg>
+     style="fill:#e8e8e3;stroke:#8b9fa7;stroke-opacity:1;fill-opacity:1" /></svg>
