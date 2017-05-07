@@ -12,6 +12,7 @@ class MovieDetailsPure extends React.Component {
 					<li>{this.props.id}</li>
 					<li>{this.props.title}</li>
 					<li>{this.props.release_date}</li>
+					<li>{this.props.popularity}</li>
 					<li>{this.props.vote_count}</li>
 					<li>{this.props.vote_average}</li>
 					<li>{this.props.overview}</li>

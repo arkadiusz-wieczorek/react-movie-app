@@ -10,6 +10,7 @@ export default function(MovieDisplayComponent) {
 				poster_path: "",
 				title: "",
 				release_date: "",
+				popularity: null,
 				vote_count: null,
 				vote_average: null,
 				overview: "",
