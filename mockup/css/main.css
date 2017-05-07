@@ -6,8 +6,8 @@ html{
 
 body{
 	padding: 1rem;
-	/*background-color: #f9f9f9;*/
-	background-color: #E8E8E3;
+	/*! background-color: #f9f9f9; */
+	/*! background-color: #E8E8E3; */
 }
 
 * {
@@ -36,7 +36,7 @@ body{
 	animation: fadeIn 4s;
 	background-image: url(./assets/logo.svg);
 	height: 3rem;
-	background-position: .25rem;
+	background-position: 0;
 	background-repeat: no-repeat;
 	width: 10rem;
 }
@@ -70,32 +70,32 @@ input{
 	width: 19rem;
 	height: 2rem;
 	/* color: #555; */
-	/* background-color: #fff; */
-	/*border: 1px solid HSL(0, 0%, 90%);*/
-	border: rgb(225, 245, 224);
+	background-color: #fff;
+	border: 1px solid HSL(0, 0%, 95%);
+	/*! border: rgb(225, 245, 224); */
 	padding-left: .5rem;
 	transition: all .4s;
 	background-image: url(./assets/search.svg);
 	background-size: contain;
 	background-position: right .125rem center;
 	background-repeat: no-repeat;
-	background-color: hsl(60, 10%, 80%);
-	color: #fff;
+	/*! background-color: hsl(60, 10%, 80%); */
+	color: #777;
 }
 
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color:    hsla(60, 10%, 95%, 1);
+    color:    #e8e8e3;
 }
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color:    hsla(60, 10%, 95%, 1);
+   color:    #e8e8e3;
    opacity:  1;
 }
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color:    hsla(60, 10%, 95%, 1);
+   color:    #e8e8e3;
    opacity:  1;
 }
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color:    hsla(60, 10%, 95%, 1);
+   color:    #e8e8e3;
 }
 
 input:focus{
@@ -118,7 +118,7 @@ input:focus{
 	/* margin-bottom: .5rem; */
 	position: sticky;
 	top: 0rem;
-	background-color: #E8E8E3;
+	/*! background-color: #E8E8E3; */
 	/* margin-bottom: 2rem; */
 	padding-bottom: 1rem;
 	/* padding-top: 1rem; */
@@ -132,15 +132,15 @@ input:focus{
 .buttons-container button{
 	height: 2rem;
 	width: 8rem;
-	background: #97DB94;
+	background: #6EF7B3;
 	/* color: rgb(225, 245, 224); */
 	border: none;
 	font-size: 1.5rem;
 	/*padding: 0;*/
-	/*! border-bottom: 1px solid #35B8CC; */
+	/*! border: 1px solid hsl(60, 10%, 90%); */
 	font-family: "Open Sans", sans-serif;
-	background: hsl(60, 10%, 80%);
-	color: #E8E8E3;
+	/*! background: #35B8CC; */
+	color: #f9f9f9;
 }
 
 ul{
@@ -155,7 +155,7 @@ ul{
 li{
 	list-style-type: none;
 	height: 3rem;
-	background: #fff;
+	background: #f9f9f9;
 	display: inline-flex;
 	margin-bottom: .5rem;
 	justify-content: space-between;
@@ -166,6 +166,7 @@ li{
 	top: 0rem;
 	position: relative;
 	transition: all 400ms;
+	border: 1px solid hsl(60, 10%, 90%);
 }
 
 li:hover{
@@ -183,13 +184,13 @@ li .poster{
 }
 
 li .movie-name{
-	background-color: #35B8CC;
+	/*! background-color: #35B8CC; */
 	color: hsl(117, 0%, 40%);
 	width: 14rem;
 	padding: .5rem;
 	padding-left: 0;
 	/* color: #fff; */
-	background: #fff;
+	/*! background: #fff; */
 }
 
 li .movie-name .title{
@@ -217,14 +218,15 @@ li .movie-details{
 	justify-content: space-between;
 	padding-left: 1rem;
 	padding-right: 1rem;
-	background-color: #E8E8E3;
-	background-color: white;
+	/*! background-color: #E8E8E3; */
+	/*! background-color: white; */
 }
 
 li .movie-details .value-container{
 	text-align: center;
 	width: 3rem;
 }
+
 
 li .movie-details .value{
 	font-size: 1rem;
