@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 const MoviesListElement = props => (
 	<a href={`#/${props.movie.id}`}>
 		<li>
-
 			<div
 				className="poster"
 				style={{
@@ -12,14 +11,16 @@ const MoviesListElement = props => (
 				}}
 			/>
 			<div className="movie-name">
-				<div className="title">{props.movie.title}</div>
+				<span className="title">{props.movie.title}</span>
 				<div className="release_date">
 					{props.movie.release_date}
 				</div>
 			</div>
 			<div className="movie-details">
 				<div className="value-container">
-					<div className="value">{props.movie.popularity}</div>
+					<div className="value">
+						{props.movie.popularity.toFixed(2)}
+					</div>
 					<div className="label">popularity</div>
 				</div>
 				<div className="value-container">
