@@ -7,7 +7,7 @@ const MoviesListElement = props => (
 			<div
 				className="poster"
 				style={{
-					backgroundImage: `url( ${props.movie.poster_path !== null ? `https://image.tmdb.org/t/p/w185_and_h278_bestv2/${props.movie.poster_path}` : "./css/assets/no-poster.svg"})`,
+					backgroundImage: `url( ${props.movie.poster_path != null ? `https://image.tmdb.org/t/p/w185_and_h278_bestv2/${props.movie.poster_path}` : "./css/assets/no-poster.svg"})`,
 				}}
 			/>
 			<div className="movie-name">
