@@ -14,6 +14,7 @@ export default function(MovieDisplayComponent) {
 				vote_count: null,
 				vote_average: null,
 				overview: "",
+				imdb_id: null,
 
 				genres: [],
 				production_countries: [],
@@ -46,7 +47,21 @@ export default function(MovieDisplayComponent) {
 				merged_object = this.mergeObjectWithState(response.data);
 				merged_object.loaded = true;
 				this.setState(merged_object);
+				this.setLinkToIMDB(
+					merged_object.title,
+					merged_object.release_date
+				);
 			});
+		}
+
+		setLinkToIMDB(title, date) {
+			HttpWrapper.getLinkToIMDB(title, date)
+				.then(response => {
+					response.data.hasOwnProperty("imdbID")
+						? this.setState({ imdb_id: response.data.imdbID })
+						: null;
+				})
+				.catch(response => null);
 		}
 
 		mergeObjectWithState(obj) {

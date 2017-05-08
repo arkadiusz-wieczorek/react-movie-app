@@ -17,6 +17,7 @@ class MovieDetailsPure extends React.Component {
 					<li>{this.props.vote_average}</li>
 					<li>{this.props.overview}</li>
 					<li>{JSON.stringify(this.props.genres)}</li>
+					<li>{this.props.imdb_id}</li>
 					<li>
 						{JSON.stringify(this.props.production_countries)}
 					</li>
