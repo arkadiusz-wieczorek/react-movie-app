@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import HttpWrapper from "../modules/http-wrapper";
-// import MovieDetails from "./movie-details.jsx";
 
 export default function(MovieDisplayComponent) {
 	return class MovieDetailsWrapper extends React.Component {
@@ -94,12 +93,15 @@ export default function(MovieDisplayComponent) {
 
 		render() {
 			return (
-				<div>
-					<button
-						onClick={() => (document.location.hash = "/movies")}
-					>
-						Go back
-					</button>
+				<div style={{ width: "100%" }}>
+					<div className="buttons-container">
+						<button
+							onClick={() => (document.location.hash = "/movies")}
+						>
+							↤
+						</button>
+
+					</div>
 
 					<MovieDisplayComponent
 						{...this.state}

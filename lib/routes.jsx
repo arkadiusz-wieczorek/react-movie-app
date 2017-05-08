@@ -1,6 +1,6 @@
 import React from "react";
 import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
-import MoviesList from "./components/list.jsx";
+import MoviesList from "./components/movie-list.jsx";
 import MovieDetailsWrapper from "./components/movie-details-wrapper.jsx";
 import MovieDetailsPure from "./components/movie-details-pure.jsx";
 

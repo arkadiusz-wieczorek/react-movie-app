@@ -56,6 +56,7 @@ class App extends React.Component {
 	}
 
 	handleChange(event) {
+		event.preventDefault();
 		this.setState({ query: event.target.value });
 	}
 	enterKeyUp(event) {
@@ -68,18 +69,38 @@ class App extends React.Component {
 		return (
 			<Router>
 				<div>
-					<input
-						value={this.state.query}
-						onChange={this.handleChange}
-						onKeyUp={this.enterKeyUp}
-						type="text"
-						placeholder="Jakiego filmu szukasz?"
-					/>
-					<Routes
-						{...this.state}
-						sortMoviesByTitle={this.sortMoviesByTitle.bind(this)}
-						moveToPage={this.moveToPage.bind(this)}
-					/>
+					<div className="navigation">
+						<div className="logo" />
+						<div className="search-container">
+							<input
+								value={this.state.query}
+								onChange={this.handleChange}
+								onKeyUp={this.enterKeyUp}
+								type="text"
+								placeholder="Jakiego filmu szukasz?"
+							/>
+						</div>
+					</div>
+					<div className="content">
+						<Routes
+							{...this.state}
+							sortMoviesByTitle={this.sortMoviesByTitle.bind(
+								this
+							)}
+							moveToPage={this.moveToPage.bind(this)}
+						/>
+					</div>
+					<footer>
+						<a
+							className="author"
+							href="http://arkadiusz-wieczorek.pl"
+						>
+							Created by Arkadiusz Wieczorek
+						</a>
+						<a href="https://www.themoviedb.org/">
+							<div className="themoviedb-logo" />
+						</a>
+					</footer>
 				</div>
 			</Router>
 		);
