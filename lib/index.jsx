@@ -69,7 +69,9 @@ class App extends React.Component {
 		return (
 			<Router>
 				<div>
-					<div className="navigation">
+					<div
+						className={`navigation ${this.state.metadata.total_results > 0 ? "loaded" : null}`}
+					>
 						<div className="logo" />
 						<div className="search-container">
 							<input
