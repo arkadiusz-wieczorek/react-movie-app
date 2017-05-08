@@ -69,7 +69,7 @@ class App extends React.Component {
 		return (
 			<Router>
 				<div>
-					<div
+					<header
 						className={`navigation ${this.state.metadata.total_results > 0 ? "loaded" : null}`}
 					>
 						<div className="logo" />
@@ -79,10 +79,10 @@ class App extends React.Component {
 								onChange={this.handleChange}
 								onKeyUp={this.enterKeyUp}
 								type="text"
-								placeholder="Jakiego filmu szukasz?"
+								placeholder="The Clone Wars: Episode 2"
 							/>
 						</div>
-					</div>
+					</header>
 					<div className="content">
 						<Routes
 							{...this.state}
