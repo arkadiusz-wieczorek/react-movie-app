@@ -3,8 +3,9 @@ import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
 import MoviesList from "./components/movie-list.jsx";
 import MovieDetailsWrapper from "./components/movie-details-wrapper.jsx";
 import MovieDetailsPure from "./components/movie-details-pure.jsx";
+import NotFoundPage from "./components/not-found-page.jsx";
 
-const MovieDetails = MovieDetailsWrapper(MovieDetailsPure);
+const MovieDetails = MovieDetailsWrapper(MovieDetailsPure); //HigherOrder Component
 
 const Routes = props => (
 	<Switch>
@@ -21,6 +22,7 @@ const Routes = props => (
 				/>
 			)}
 		/>
+		<Route path="/not-found" component={NotFoundPage} />
 		<Route
 			path="/:movie_id"
 			render={rest => (
