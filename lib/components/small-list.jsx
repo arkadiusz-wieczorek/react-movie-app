@@ -6,17 +6,16 @@ class SmallList extends React.Component {
 	}
 
 	render() {
-		return (
-			<div>
-				{this.props.array.length > 0
-					? <ul className={this.props.className}>
-							{this.props.array.map((el, i) => (
-								<li key={i}>{el.name}</li>
-							))}
-						</ul>
-					: null}
-			</div>
-		);
+		return this.props.array.length > 0
+			? <div>
+					<span>{this.props.spanText}</span>
+					<ul className={this.props.className}>
+						{this.props.array.map((el, i) => (
+							<li key={i}>{el.name}</li>
+						))}
+					</ul>
+				</div>
+			: null;
 	}
 }
 export default SmallList;
