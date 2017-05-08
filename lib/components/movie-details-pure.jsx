@@ -8,12 +8,14 @@ class MovieDetailsPure extends React.Component {
 	render() {
 		return (
 			<div className="movie">
-				<div
-					className="poster"
-					style={{
-						backgroundImage: `url( ${this.props.poster_path != null || this.props.poster_path != "" ? `https://image.tmdb.org/t/p/w185_and_h278_bestv2/${this.props.poster_path}` : "./css/assets/no-poster.svg"})`,
-					}}
-				/>
+				{this.props.poster_path != null
+					? <div
+							className="poster"
+							style={{
+								backgroundImage: `url(https://image.tmdb.org/t/p/w185_and_h278_bestv2/${this.props.poster_path})`,
+							}}
+						/>
+					: <div className="poster" />}
 				<div className="details">
 					<h1 className="title">
 						{this.props.title}
