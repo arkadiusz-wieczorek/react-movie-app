@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import MoviesListElement from "./movie-list-element.jsx";
+import ButtonsContainer from "./buttons-container.jsx";
 
 class MoviesList extends React.Component {
 	constructor(props) {
@@ -10,36 +11,14 @@ class MoviesList extends React.Component {
 		return (
 			<div style={{ width: "100%" }}>
 				{this.props.movies.length > 0
-					? <div className="buttons-container">
-							<button
-								disabled={
-									this.props.metadata.page == 1 ||
-										!this.props.loaded
-								}
-								onClick={this.props.moveToPage.bind(this, -1)}
-							>
-								↤
-							</button>
-							<button
-								disabled={this.props.sorted}
-								onClick={this.props.sortMoviesByTitle}
-							>
-								⇅
-							</button>
-
-							<button
-								disabled={
-									this.props.metadata.page ==
-										this.props.metadata.total_pages ||
-										!this.props.loaded
-								}
-								onClick={this.props.moveToPage.bind(this, 1)}
-							>
-								↦
-							</button>
-						</div>
+					? <ButtonsContainer
+							moveToPage={this.props.moveToPage}
+							sortMoviesByTitle={this.props.sortMoviesByTitle}
+							metadata={this.props.metadata}
+							sorted={this.props.sorted}
+							loaded={this.props.loaded}
+						/>
 					: null}
-
 				{!this.props.loaded
 					? <div className="loading-circle" />
 					: <ul className="list">
@@ -47,6 +26,15 @@ class MoviesList extends React.Component {
 								<MoviesListElement movie={movie} key={movie.id} />
 							))}
 						</ul>}
+				{this.props.movies.length > 0
+					? <ButtonsContainer
+							moveToPage={this.props.moveToPage}
+							sortMoviesByTitle={this.props.sortMoviesByTitle}
+							metadata={this.props.metadata}
+							sorted={this.props.sorted}
+							loaded={this.props.loaded}
+						/>
+					: null}
 			</div>
 		);
 	}
