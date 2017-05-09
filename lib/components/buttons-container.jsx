@@ -13,7 +13,7 @@ class ButtonsContainer extends React.Component {
 					↤
 				</button>
 				<button
-					disabled={this.props.sorted}
+					disabled={this.props.sorted ? true : false}
 					onClick={this.props.sortMoviesByTitle}
 				>
 					⇅
