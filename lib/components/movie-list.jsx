@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import MoviesListElement from "./movie-list-element.jsx";
 import ButtonsContainer from "./buttons-container.jsx";
+import NotFoundPage from "./not-found-page.jsx";
 
 class MoviesList extends React.Component {
 	constructor(props) {
@@ -21,11 +22,16 @@ class MoviesList extends React.Component {
 					: null}
 				{!this.props.loaded
 					? <div className="loading-circle" />
-					: <ul className="list">
-							{this.props.movies.map(movie => (
-								<MoviesListElement movie={movie} key={movie.id} />
-							))}
-						</ul>}
+					: this.props.metadata.total_results !== 0
+							? <ul className="list">
+									{this.props.movies.map(movie => (
+										<MoviesListElement
+											movie={movie}
+											key={movie.id}
+										/>
+									))}
+								</ul>
+							: <NotFoundPage error_text="No results. Try with another query." />}
 				{this.props.movies.length > 0
 					? <ButtonsContainer
 							moveToPage={this.props.moveToPage}
