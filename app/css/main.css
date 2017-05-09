@@ -371,6 +371,7 @@ ul.list li .movie-details .label{
 	border: 1px solid HSL(0, 0%, 92%);
 	padding-left: .5rem;
 	padding-right: .5rem;
+	white-space: nowrap;
 }
 
 .movie ul.production_companies,
@@ -436,6 +437,3 @@ footer .themoviedb-logo{
 	width: 4rem;
 	filter: opacity(20%);
 }
-
-/*file:///home/arkadiusz/projects/personal/react-movie-app/app/index.html#/456300*/
-the
