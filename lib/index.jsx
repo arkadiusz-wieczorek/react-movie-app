@@ -8,7 +8,7 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			metadata: { page: 0, total_results: 0, total_pages: 0 },
+			metadata: { page: null, total_results: null, total_pages: null },
 			movies: [],
 			query: "",
 			loaded: true,
@@ -33,10 +33,7 @@ class App extends React.Component {
 					sorted: false,
 				});
 			})
-			.catch(error => {
-				alert("Wystąpił błąd, spróbuj ponownie.");
-				console.log(error);
-			});
+			.catch(() => (document.location.hash = "/not-found"));
 	}
 
 	sortMoviesByTitle() {
@@ -60,6 +57,7 @@ class App extends React.Component {
 		this.setState({ query: event.target.value });
 	}
 	enterKeyUp(event) {
+		event.preventDefault;
 		if (event.keyCode === 13) {
 			this.searchMovies(this.state.query);
 			document.location.hash = "/movies";
@@ -69,10 +67,8 @@ class App extends React.Component {
 		return (
 			<Router>
 				<div>
-					<header
-						className={`navigation ${this.state.metadata.total_results > 0 ? "loaded" : null}`}
-					>
-						<div className="logo" />
+					<header className="navigation">
+						<a href="#/"><div className="logo" /></a>
 						<div className="search-container">
 							<input
 								value={this.state.query}
