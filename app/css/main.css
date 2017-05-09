@@ -61,7 +61,7 @@ body{
 input{
 	font-family: 'Open Sans', sans-serif;
 	font-size: .666666667rem;
-	width: 20rem;
+	width: 20.5rem;
 	height: 2rem;
 	background-color: #fff;
 	border: 1px solid HSL(0, 0%, 92%);
@@ -76,18 +76,18 @@ input{
 }
 
 ::-webkit-input-placeholder {
-    color:    #E8E8E3;
+    color:    HSL(0, 0%, 82%);
 }
 :-moz-placeholder {
-   color:    #E8E8E3;
+   color:    HSL(0, 0%, 82%);
    opacity:  1;
 }
 ::-moz-placeholder {
-   color:    #E8E8E3;
+   color:    HSL(0, 0%, 82%);
    opacity:  1;
 }
 :-ms-input-placeholder {
-   color:    #E8E8E3;
+   color:    HSL(0, 0%, 82%);
 }
 
 input:focus{
@@ -118,7 +118,7 @@ input:focus{
 
 .buttons-container button{
 	height: 2rem;
-	width: 4rem;
+	width: 5rem;
 	font-size: 1.4rem;
 	font-family: "Open Sans", sans-serif;
 	color: hsl(197, 14%, 60%);
@@ -129,7 +129,21 @@ input:focus{
 	text-align: center;
 }
 
-.buttons-container button:hover{color: #FFF;background: #85E0B3;border: 1px solid #fff;}
+.buttons-container button:hover{
+	color: #FFF;
+	background: #85E0B3;
+	border: 1px solid #fff;
+}
+
+.buttons-container button:disabled{
+	color: HSL(0, 0%, 92%);
+}
+
+.buttons-container button:disabled:hover{
+	background: #fff;
+	border: 1px solid HSL(0, 0%, 92%);
+
+}
 
 ul.list{
 	display: flex;
@@ -212,7 +226,7 @@ ul.list li .movie-details{
 	flex-flow: row;
 	justify-content: space-between;
 	padding-left: 1rem;
-	padding-right: 1rem;
+	padding-right: 0.25rem;
 }
 
 ul.list li .movie-details .value-container{
@@ -381,6 +395,7 @@ ul.list li .movie-details .label{
 	margin-top: 2rem;
 	font-size: 1.33333333rem;
 	font-weight: 300;
+	text-align: center;
 }
 
 .not-found .image{
@@ -423,3 +438,4 @@ footer .themoviedb-logo{
 }
 
 /*file:///home/arkadiusz/projects/personal/react-movie-app/app/index.html#/456300*/
+the
