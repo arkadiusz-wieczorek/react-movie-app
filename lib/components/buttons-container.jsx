@@ -18,7 +18,6 @@ class ButtonsContainer extends React.Component {
 				>
 					⇅
 				</button>
-
 				<button
 					disabled={
 						this.props.metadata.page ==

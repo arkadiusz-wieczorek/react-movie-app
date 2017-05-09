@@ -57,7 +57,7 @@ class App extends React.Component {
 		this.setState({ query: event.target.value });
 	}
 	enterKeyUp(event) {
-		event.preventDefault;
+		event.preventDefault();
 		if (event.keyCode === 13) {
 			this.searchMovies(this.state.query);
 			document.location.hash = "/movies";
@@ -91,11 +91,12 @@ class App extends React.Component {
 					<footer>
 						<a
 							className="author"
+							target="_blank"
 							href="http://arkadiusz-wieczorek.pl"
 						>
 							Created by Arkadiusz Wieczorek
 						</a>
-						<a href="https://www.themoviedb.org/">
+						<a target="_blank" href="https://www.themoviedb.org/">
 							<div className="themoviedb-logo" />
 						</a>
 					</footer>
