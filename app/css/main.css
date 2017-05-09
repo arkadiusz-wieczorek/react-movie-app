@@ -120,7 +120,7 @@ input:focus{
 	height: 2rem;
 	width: 5rem;
 	font-size: 1.4rem;
-	font-family: "Open Sans", sans-serif;
+	font-family: "Open Sans", sans-serif !important;
 	color: hsl(197, 14%, 60%);
 	background-color: #fff;
 	border: 1px solid HSL(0, 0%, 92%);
