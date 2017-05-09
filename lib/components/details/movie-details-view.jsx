@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import SmallList from "./small-list.jsx";
+import SmallList from "../helpers/small-list.jsx";
 
-class MovieDetailsPure extends React.Component {
+class MovieDetailsView extends React.Component {
 	constructor(props) {
 		super(props);
 	}
@@ -84,4 +84,4 @@ class MovieDetailsPure extends React.Component {
 		);
 	}
 }
-export default MovieDetailsPure;
+export default MovieDetailsView;

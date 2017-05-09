@@ -1,11 +1,11 @@
 import React from "react";
 import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
-import MoviesList from "./components/movie-list.jsx";
-import MovieDetailsWrapper from "./components/movie-details-wrapper.jsx";
-import MovieDetailsPure from "./components/movie-details-pure.jsx";
-import NotFoundPage from "./components/not-found-page.jsx";
+import MoviesList from "./list/movie-list.jsx";
+import MovieDetailsWrapper from "./details/movie-details-wrapper.jsx";
+import MovieDetailsView from "./details/movie-details-view.jsx";
+import NotFoundPage from "./not-found/not-found-page.jsx";
 
-const MovieDetails = MovieDetailsWrapper(MovieDetailsPure); //HigherOrder Component
+const MovieDetails = MovieDetailsWrapper(MovieDetailsView); //HigherOrder Component
 
 const Routes = props => (
 	<div className="content">

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import HttpWrapper from "../modules/http-wrapper";
+import HttpWrapper from "../../modules/http-wrapper";
 
 export default function(MovieDisplayComponent) {
 	return class MovieDetailsWrapper extends React.Component {

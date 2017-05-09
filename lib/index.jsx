@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { HashRouter as Router, Link } from "react-router-dom";
 import HttpWrapper from "./modules/http-wrapper";
-import Routes from "./routes.jsx";
-import Header from "./components/header.jsx";
-import Footer from "./components/footer.jsx";
+import Routes from "./components/routes.jsx";
+import Header from "./components/helpers/header.jsx";
+import Footer from "./components/helpers/footer.jsx";
 
 class App extends React.Component {
 	constructor(props) {
