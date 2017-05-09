@@ -1,14 +1,16 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import { HashRouter as Router, Link } from "react-router-dom";
 import HttpWrapper from "./modules/http-wrapper";
 import Routes from "./routes.jsx";
-import { HashRouter as Router, Link } from "react-router-dom";
+import Header from "./components/header.jsx";
+import Footer from "./components/footer.jsx";
 
 class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			metadata: { page: 0, total_results: 0, total_pages: 0 },
+			metadata: { page: null, total_results: null, total_pages: null },
 			movies: [],
 			query: "",
 			loaded: true,
@@ -33,10 +35,7 @@ class App extends React.Component {
 					sorted: false,
 				});
 			})
-			.catch(error => {
-				alert("Wystąpił błąd, spróbuj ponownie.");
-				console.log(error);
-			});
+			.catch(() => (document.location.hash = "/not-found"));
 	}
 
 	sortMoviesByTitle() {
@@ -56,9 +55,11 @@ class App extends React.Component {
 	}
 
 	handleChange(event) {
+		event.preventDefault();
 		this.setState({ query: event.target.value });
 	}
 	enterKeyUp(event) {
+		event.preventDefault();
 		if (event.keyCode === 13) {
 			this.searchMovies(this.state.query);
 			document.location.hash = "/movies";
@@ -68,18 +69,17 @@ class App extends React.Component {
 		return (
 			<Router>
 				<div>
-					<input
+					<Header
 						value={this.state.query}
 						onChange={this.handleChange}
 						onKeyUp={this.enterKeyUp}
-						type="text"
-						placeholder="Jakiego filmu szukasz?"
 					/>
 					<Routes
 						{...this.state}
 						sortMoviesByTitle={this.sortMoviesByTitle.bind(this)}
 						moveToPage={this.moveToPage.bind(this)}
 					/>
+					<Footer />
 				</div>
 			</Router>
 		);

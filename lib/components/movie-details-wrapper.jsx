@@ -1,18 +1,19 @@
 import React, { Component } from "react";
 import HttpWrapper from "../modules/http-wrapper";
-// import MovieDetails from "./movie-details.jsx";
 
 export default function(MovieDisplayComponent) {
 	return class MovieDetailsWrapper extends React.Component {
 		constructor(props) {
 			super(props);
 			this.state = {
-				poster_path: "",
+				poster_path: null,
 				title: "",
 				release_date: "",
-				vote_count: null,
-				vote_average: null,
+				popularity: 0,
+				vote_count: 0,
+				vote_average: 0,
 				overview: "",
+				imdb_id: null,
 
 				genres: [],
 				production_countries: [],
@@ -35,16 +36,31 @@ export default function(MovieDisplayComponent) {
 		}
 
 		getMovie(id) {
-			this.setState({ loaded: false });
 			let merged_object, movie = this.selectMovie();
 			if (movie !== null) {
 				merged_object = this.mergeObjectWithState(movie);
 				this.setState(merged_object);
 			}
-			HttpWrapper.getMovieDetails(id).then(response => {
-				merged_object = this.mergeObjectWithState(response.data);
-				merged_object.loaded = true;
-				this.setState(merged_object);
+			HttpWrapper.getMovieDetails(id)
+				.then(response => {
+					merged_object = this.mergeObjectWithState(response.data);
+					this.setState(merged_object);
+					this.setLinkToIMDB(
+						merged_object.title,
+						merged_object.release_date
+					);
+				})
+				.catch(() => (document.location.hash = "/not-found"));
+		}
+
+		setLinkToIMDB(title, date) {
+			HttpWrapper.getLinkToIMDB(title, date).then(response => {
+				response.data.hasOwnProperty("imdbID")
+					? this.setState({
+							imdb_id: response.data.imdbID,
+							loaded: true,
+						})
+					: this.setState({ loaded: true });
 			});
 		}
 
@@ -60,9 +76,7 @@ export default function(MovieDisplayComponent) {
 
 		componentWillReceiveProps(nextProps) {
 			const next_id = nextProps.match.params.movie_id;
-			if (this.getMovieId() !== next_id) {
-				this.getMovie(next_id); // or setTimeout(() => this.getMovie(), 0); //next tick
-			}
+			if (this.getMovieId() !== next_id) this.getMovie(next_id);
 		}
 
 		componentDidMount() {
@@ -78,17 +92,15 @@ export default function(MovieDisplayComponent) {
 
 		render() {
 			return (
-				<div>
-					<button
-						onClick={() => (document.location.hash = "/movies")}
-					>
-						Go back
-					</button>
-
-					<MovieDisplayComponent
-						{...this.state}
-						id={this.getMovieId()}
-					/>
+				<div style={{ width: "100%" }}>
+					<div className="buttons-container">
+						<button
+							onClick={() => (document.location.hash = "/movies")}
+						>
+							↤
+						</button>
+					</div>
+					<MovieDisplayComponent {...this.state} />
 				</div>
 			);
 		}
