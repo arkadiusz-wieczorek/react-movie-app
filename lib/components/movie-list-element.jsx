@@ -28,7 +28,9 @@ const MoviesListElement = props => (
 					<div className="label">votes</div>
 				</div>
 				<div className="value-container">
-					<div className="value">{props.movie.vote_average}</div>
+					<div className="value">
+						{props.movie.vote_average * 10}%
+					</div>
 					<div className="label">score</div>
 				</div>
 			</div>

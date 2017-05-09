@@ -7,6 +7,7 @@ class Header extends React.Component {
 				<a href="#/"><div className="logo" /></a>
 				<div className="search-container">
 					<input
+						autoFocus
 						value={this.props.query}
 						onChange={this.props.onChange}
 						onKeyUp={this.props.onKeyUp}
