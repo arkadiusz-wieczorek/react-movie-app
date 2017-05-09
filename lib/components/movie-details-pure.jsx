@@ -32,12 +32,14 @@ class MovieDetailsPure extends React.Component {
 								{this.props.imdb_id !== null
 									? <a
 											className="imdb-link"
+											target="_blank"
 											href={`http://www.imdb.com/title/${this.props.imdb_id}/`}
 										>
 											Check on IMDB.com
 										</a>
 									: <a
 											className="imdb-link"
+											target="_blank"
 											href={`http://www.imdb.com/find?${this.props.title.replace(/ /g, "+")}`}
 										>
 											Search on IMDB.com
