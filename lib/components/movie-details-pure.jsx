@@ -29,7 +29,8 @@ class MovieDetailsPure extends React.Component {
 									className="genres"
 									array={this.props.genres}
 								/>
-								{this.props.imdb_id !== null
+								{this.props.imdb_id !== "" &&
+									this.props.imdb_id !== null
 									? <a
 											className="imdb-link"
 											target="_blank"
