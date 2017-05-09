@@ -16,7 +16,7 @@ class MoviesList extends React.Component {
 							moveToPage={this.props.moveToPage}
 							sortMoviesByTitle={this.props.sortMoviesByTitle}
 							metadata={this.props.metadata}
-							sorted={this.props.sorted}
+							order={this.props.order}
 							loaded={this.props.loaded}
 						/>
 					: null}
@@ -37,7 +37,7 @@ class MoviesList extends React.Component {
 							moveToPage={this.props.moveToPage}
 							sortMoviesByTitle={this.props.sortMoviesByTitle}
 							metadata={this.props.metadata}
-							sorted={this.props.sorted}
+							order={this.props.order}
 							loaded={this.props.loaded}
 						/>
 					: null}

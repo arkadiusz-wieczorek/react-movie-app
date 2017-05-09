@@ -14,7 +14,7 @@ class App extends React.Component {
 			movies: [],
 			query: "",
 			loaded: true,
-			sorted: false,
+			order: 1,
 		};
 		this.handleChange = this.handleChange.bind(this);
 		this.enterKeyUp = this.enterKeyUp.bind(this);
@@ -32,18 +32,21 @@ class App extends React.Component {
 					},
 					movies: res.data.results,
 					loaded: true,
-					sorted: false,
+					order: 1,
 				});
 			})
 			.catch(() => (document.location.hash = "/not-found"));
 	}
 
 	sortMoviesByTitle() {
+		let order = this.state.order;
 		let sorted_movies = this.state.movies.sort((a, b) => {
 			let titleA = a.title.toLowerCase(), titleB = b.title.toLowerCase();
-			return titleA < titleB ? -1 : titleA === titleB ? 0 : 1;
+			return titleA < titleB
+				? -1 * order
+				: titleA === titleB ? 0 : 1 * order;
 		});
-		this.setState({ movies: sorted_movies, sorted: true });
+		this.setState({ movies: sorted_movies, order: order * -1 });
 	}
 
 	moveToPage(offset) {
@@ -58,6 +61,7 @@ class App extends React.Component {
 		event.preventDefault();
 		this.setState({ query: event.target.value });
 	}
+
 	enterKeyUp(event) {
 		event.preventDefault();
 		if (event.keyCode === 13) {
@@ -65,6 +69,15 @@ class App extends React.Component {
 			document.location.hash = "/movies";
 		}
 	}
+
+	shouldComponentUpdate(nextProps, nextState) {
+		return (
+			nextState.order !== this.state.order ||
+			nextState.loaded !== this.state.loaded ||
+			nextState.metadata.page !== this.state.metadata.page
+		);
+	}
+
 	render() {
 		return (
 			<Router>
