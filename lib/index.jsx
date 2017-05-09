@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import { HashRouter as Router, Link } from "react-router-dom";
 import HttpWrapper from "./modules/http-wrapper";
 import Routes from "./routes.jsx";
-import { HashRouter as Router, Link } from "react-router-dom";
+import Header from "./components/header.jsx";
+import Footer from "./components/footer.jsx";
 
 class App extends React.Component {
 	constructor(props) {
@@ -67,39 +69,17 @@ class App extends React.Component {
 		return (
 			<Router>
 				<div>
-					<header className="navigation">
-						<a href="#/"><div className="logo" /></a>
-						<div className="search-container">
-							<input
-								value={this.state.query}
-								onChange={this.handleChange}
-								onKeyUp={this.enterKeyUp}
-								type="text"
-								placeholder="The Clone Wars: Episode 2"
-							/>
-						</div>
-					</header>
-					<div className="content">
-						<Routes
-							{...this.state}
-							sortMoviesByTitle={this.sortMoviesByTitle.bind(
-								this
-							)}
-							moveToPage={this.moveToPage.bind(this)}
-						/>
-					</div>
-					<footer>
-						<a
-							className="author"
-							target="_blank"
-							href="http://arkadiusz-wieczorek.pl"
-						>
-							Created by Arkadiusz Wieczorek
-						</a>
-						<a target="_blank" href="https://www.themoviedb.org/">
-							<div className="themoviedb-logo" />
-						</a>
-					</footer>
+					<Header
+						value={this.state.query}
+						onChange={this.handleChange}
+						onKeyUp={this.enterKeyUp}
+					/>
+					<Routes
+						{...this.state}
+						sortMoviesByTitle={this.sortMoviesByTitle.bind(this)}
+						moveToPage={this.moveToPage.bind(this)}
+					/>
+					<Footer />
 				</div>
 			</Router>
 		);
