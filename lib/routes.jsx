@@ -22,7 +22,10 @@ const Routes = props => (
 				/>
 			)}
 		/>
-		<Route path="/not-found" component={NotFoundPage} />
+		<Route
+			path="/not-found"
+			render={() => <NotFoundPage error_text={props.error_text} />}
+		/>
 		<Route
 			path="/:movie_id"
 			render={rest => (
