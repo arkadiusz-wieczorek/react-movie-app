@@ -5,9 +5,9 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "browserify ./lib/index.jsx -o ./app/js/bundle.js -t [ babelify --presets [ es2015 react ] ] -v",
-        "watch": "watchify ./lib/index.jsx -o ./app/js/bundle.js -t [ babelify --presets [ es2015 react ] ] -v",
-        "start": "cd ./app && python -m SimpleHTTPServer 8888"
+        "build": "browserify ./lib/app.jsx -o ./build/js/bundle.js -t [ babelify --presets [ es2015 react ] ] -v",
+        "watch": "watchify ./lib/app.jsx -o ./build/js/bundle.js -t [ babelify --presets [ es2015 react ] ] -v",
+        "start": "cd ./build && python -m SimpleHTTPServer 8888"
     },
     "repository": {
         "type": "git",
