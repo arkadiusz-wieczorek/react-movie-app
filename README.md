@@ -1,6 +1,4 @@
 
-# react-movie-app
-
 ![react-movie-app-logo](http://arkadiuseh.cluster017.ovh.net/react-movie-app/react-movie-app-logo.png)
 
 <a href="http://arkadiuseh.cluster017.ovh.net/react-movie-app/">Online demo</a>
