@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 const MoviesListElement = props => (
-	<a href={`#/${props.movie.id}`}>
+	<Link to={`/${props.movie.id}`}>
 		<li>
 			<div
 				className="poster"
@@ -35,7 +35,7 @@ const MoviesListElement = props => (
 				</div>
 			</div>
 		</li>
-	</a>
+	</Link>
 );
 
 export default MoviesListElement;
