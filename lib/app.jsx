@@ -70,6 +70,7 @@ class App extends React.Component {
 			document.location.hash = "/movies";
 		}
 	}
+
 	componentDidUpdate(prevProps, prevState) {
 		prevState.metadata.page !== this.state.metadata.page
 			? Body.scrollIntoView()
