@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import HttpWrapper from "../../modules/http-wrapper";
+const Body = document.querySelector("body");
 
 export default function(MovieDisplayComponent) {
 	return class MovieDetailsWrapper extends React.Component {
@@ -81,6 +82,7 @@ export default function(MovieDisplayComponent) {
 
 		componentDidMount() {
 			this.getMovie(this.getMovieId());
+			Body.scrollIntoView();
 		}
 
 		shouldComponentUpdate(nextProps, nextState) {

@@ -5,6 +5,7 @@ import HttpWrapper from "./modules/http-wrapper";
 import Routes from "./components/routes.jsx";
 import Header from "./components/helpers/header.jsx";
 import Footer from "./components/helpers/footer.jsx";
+const Body = document.querySelector("body");
 
 class App extends React.Component {
 	constructor(props) {
@@ -57,17 +58,22 @@ class App extends React.Component {
 		this.searchMovies(this.state.query, new_page);
 	}
 
-	handleChange(event) {
-		event.preventDefault();
-		this.setState({ query: event.target.value });
+	handleChange(e) {
+		e.preventDefault();
+		this.setState({ query: e.target.value });
 	}
 
-	enterKeyUp(event) {
-		event.preventDefault();
-		if (event.keyCode === 13) {
+	enterKeyUp(e) {
+		e.preventDefault();
+		if (e.keyCode === 13) {
 			this.searchMovies(this.state.query);
 			document.location.hash = "/movies";
 		}
+	}
+	componentDidUpdate(prevProps, prevState) {
+		prevState.metadata.page !== this.state.metadata.page
+			? Body.scrollIntoView()
+			: null;
 	}
 
 	shouldComponentUpdate(nextProps, nextState) {
