@@ -29,14 +29,9 @@ body{
 }
 
 
-/*@keyframes fadeIn { 0% { opacity:0; } 100% { opacity:1; }}*/
-
-
 .logo{
-	/*animation: fadeIn 4s;*/
 	background-image: url(./assets/logo.svg);
 	height: 2rem;
-	/* background-position: 2rem; */
 	background-repeat: no-repeat;
 	width: 10rem;
 }
@@ -44,7 +39,6 @@ body{
 .navigation{
 	display: flex;
 	flex-flow: row;
-	/*margin-top: 8rem;*/
 	align-items: center;
 	justify-content: space-between;
 }
@@ -162,7 +156,7 @@ ul.list a{
 ul.list li{
 	list-style-type: none;
 	height: 3rem;
-	display: inline-flex;
+	display: flex;
 	justify-content: space-between;
 	cursor: pointer;
 	border-bottom: 1px solid HSL(0, 0%, 92%);
@@ -203,16 +197,17 @@ ul.list li .movie-name{
 	width: 18rem;
 	padding-left: 0;
 	padding-top: .55rem;
-	/*! display: flex; */
 }
 
 ul.list li .movie-name .title{
 	font-size: 0.666666667rem;
 	font-weight: 400;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	padding-top: .55rem;
 	color: hsl(197, 14%, 40%);
+	white-space: nowrap;
+	width: 100%;
+	display:block;
+	overflow: hidden;
+	text-overflow:ellipsis;
 }
 
 ul.list li .movie-name .release_date{
@@ -362,7 +357,6 @@ ul.list li .movie-details .label{
 .movie ul.genres li{
 	list-style-type: none;
 	height: 1.5rem;
-	/*! width: 3rem; */
 	color: #A48697;
 	border-radius: 3px;
 	text-align: center;
@@ -376,7 +370,6 @@ ul.list li .movie-details .label{
 
 .movie ul.production_companies,
 .movie ul.production_countries{
-	/* margin-right: 1rem; */
 	padding-left: 1rem;
 	padding-top: .25rem;
 }
@@ -436,4 +429,10 @@ footer .themoviedb-logo{
 	height: 1.6rem;
 	width: 4rem;
 	filter: opacity(20%);
+}
+
+@media all and (max-width: 32rem) {
+	ul.list li{
+		flex-flow: column;
+	}
 }
