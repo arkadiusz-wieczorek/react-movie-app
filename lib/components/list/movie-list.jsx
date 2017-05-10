@@ -10,7 +10,6 @@ const MoviesList = props => (
 					moveToPage={props.moveToPage}
 					sortMoviesByTitle={props.sortMoviesByTitle}
 					metadata={props.metadata}
-					order={props.order}
 					loaded={props.loaded}
 				/>
 			: null}
@@ -28,7 +27,6 @@ const MoviesList = props => (
 					moveToPage={props.moveToPage}
 					sortMoviesByTitle={props.sortMoviesByTitle}
 					metadata={props.metadata}
-					order={props.order}
 					loaded={props.loaded}
 				/>
 			: null}

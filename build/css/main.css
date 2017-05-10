@@ -69,7 +69,7 @@ input{
 	color: hsl(197, 14%, 50%);
 	font-size: .666666667rem;
 	font-family: 'Open Sans', sans-serif;
-	transition: all .4s;
+	padding-right: 2.25rem;
 }
 
 ::-webkit-input-placeholder {
@@ -451,10 +451,14 @@ footer .themoviedb-logo{
 	filter: opacity(20%);
 }
 
+@media all and (max-width: 50rem){
+	input{
+		width: 14rem;
+	}
+}
 
 @media all and (max-width: 48rem){
 	.movie{
-		/*flex-flow: column;*/
 		flex-wrap: wrap;
 	}
 
@@ -481,16 +485,11 @@ footer .themoviedb-logo{
 		justify-content: space-around;
 	}
 
-	/*.movie .poster{
-		width: 100%;
-		background-size: cover;
-	}*/
-}
-@media all and (max-width: 40rem) {
 	.movie .poster, .movie .details{
 		width: 100%
 	}
 	.movie .details{
+		margin-top: 1rem;
 		margin-right: 0;
 		padding-right: 0;
 		padding-left: 0;
@@ -518,7 +517,13 @@ footer .themoviedb-logo{
 }
 
 
-@media all and (max-width: 36rem) {
+@media all and (max-width: 40rem) {
+	.logo{
+		width: 9rem;
+	}
+	input{
+		width: 100%;
+	}
 	ul.list li{
 		margin-bottom: .5rem;
 		padding: .25rem;
@@ -527,9 +532,7 @@ footer .themoviedb-logo{
 
 		flex-flow: row;
 		flex-wrap: wrap;
-		/*! justify-content: space-between; */
 	}
-
 
 	ul.list li .movie-details{
 		margin-right: .25rem;
@@ -561,12 +564,15 @@ footer .themoviedb-logo{
 	}
 }
 
-
-
-
 @media all and (max-width: 28rem) {
-
-
+	.input{
+		/*margin-left: 1rem;*/
+		/*width: 100%;*/
+	}
+	.logo{
+		background-position-x: -5.25rem;
+		width: 4rem;
+	}
 
 	ul.list li .movie-details{
 		margin-right: .25rem;
@@ -602,9 +608,8 @@ footer .themoviedb-logo{
 	ul.list li .movie-name{
 		text-align: left;
 	}
-
-
 }
+
 @media all and (max-width: 24rem) {
 
 	footer{
