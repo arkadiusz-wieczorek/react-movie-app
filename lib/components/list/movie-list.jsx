@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import MoviesListElement from "./movie-list-element.jsx";
 import ButtonsContainer from "../helpers/buttons-container.jsx";
 import NotFoundPage from "../not-found/not-found-page.jsx";

@@ -15,11 +15,9 @@ export default function(MovieDisplayComponent) {
 				vote_average: 0,
 				overview: "",
 				imdb_id: null,
-
 				genres: [],
 				production_countries: [],
 				production_companies: [],
-
 				loaded: false,
 			};
 		}
