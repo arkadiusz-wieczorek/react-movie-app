@@ -10,12 +10,13 @@
 ```
 $ npm install
 $ npm install -g browserify watchify
-$ npm run build
+
 ```
 
 ## Run example
 
 ```
+$ npm run build
 $ npm start
 ```
 and go to <a href="http://localhost:8888">http://localhost:8888</a>
@@ -29,6 +30,8 @@ In case of problems with global packages installation like `npm install -g brows
 - you can use `sudo`,
 - set up environment to install packages without sudo by <a href="http://stackoverflow.com/a/25855403/6072815">this solution</a>,
 - or use <a href="https://github.com/creationix/nvm">NVM</a>.
+
+For development build please type `npm run build-dev`.
 
 ## Screenshots
 
