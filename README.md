@@ -30,5 +30,13 @@ In case of problems with global packages installation like `npm install -g brows
 - set up environment to install packages without sudo by <a href="http://stackoverflow.com/a/25855403/6072815">this solution</a>,
 - or use <a href="https://github.com/creationix/nvm">NVM</a>.
 
+## Screenshots
+
+
+### Desktop
 
 ![react-movie-app](http://arkadiuseh.cluster017.ovh.net/react-movie-app/react-movie-app.png)
+
+### Mobile
+
+![react-movie-app-mobile](http://arkadiuseh.cluster017.ovh.net/react-movie-app/react-movie-app-mobile.png)
