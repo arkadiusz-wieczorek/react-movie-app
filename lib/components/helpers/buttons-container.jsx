@@ -6,10 +6,10 @@ const ButtonsContainer = props => (
 			disabled={props.metadata.page == 1 || !props.loaded}
 			onClick={props.moveToPage.bind(this, -1)}
 		>
-			↤
+			&#8592;
 		</button>
 		<button onClick={props.sortMoviesByTitle}>
-			⇅
+			&#8693;
 		</button>
 		<button
 			disabled={
@@ -18,7 +18,7 @@ const ButtonsContainer = props => (
 			}
 			onClick={props.moveToPage.bind(this, 1)}
 		>
-			↦
+			&#8594;
 		</button>
 	</div>
 );
