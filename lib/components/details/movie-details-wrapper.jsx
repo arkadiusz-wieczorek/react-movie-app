@@ -97,7 +97,7 @@ export default function(MovieDisplayComponent) {
 						<button
 							onClick={() => (document.location.hash = "/movies")}
 						>
-							↤
+							&#8592;
 						</button>
 					</div>
 					<MovieDisplayComponent {...this.state} />
