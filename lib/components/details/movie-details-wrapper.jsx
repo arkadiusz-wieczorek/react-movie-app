@@ -60,7 +60,7 @@ export default function(MovieDisplayComponent) {
 							loaded: true,
 						})
 					: this.setState({ loaded: true });
-			});
+			}).catch((err) => this.setState({ loaded: true }))
 		}
 
 		mergeObjectWithState(obj) {
