@@ -1,7 +1,7 @@
 import React from "react";
 import SmallList from "../helpers/small-list.jsx";
 
-const MovieDetailsView = props => (
+const MovieDetailsView = props =>
 	<div className="movie">
 		{props.poster_path != null
 			? <div
@@ -14,14 +14,19 @@ const MovieDetailsView = props => (
 		<div className="details">
 			<h1 className="title">
 				{props.title}
-				<span className="release-date">{` ${props.release_date.substring(0, 4)}`}</span>
+				<span className="release-date">{` ${props.release_date.substring(
+					0,
+					4
+				)}`}</span>
 			</h1>
 			<div className="overview">{props.overview}</div>
 
 			{props.loaded
 				? <div>
 						<SmallList className="genres" array={props.genres} />
-						{props.imdb_id !== "" && props.imdb_id !== null
+						{props.imdb_id !== "" &&
+							props.imdb_id !== null &&
+							props.imdb_id !== undefined
 							? <a
 									className="imdb-link"
 									target="_blank"
@@ -32,7 +37,10 @@ const MovieDetailsView = props => (
 							: <a
 									className="imdb-link"
 									target="_blank"
-									href={`http://www.imdb.com/find?${props.title.replace(/ /g, "+")}`}
+									href={`http://www.imdb.com/find?${props.title.replace(
+										/ /g,
+										"+"
+									)}`}
 								>
 									Search on IMDB.com
 								</a>}
@@ -69,7 +77,6 @@ const MovieDetailsView = props => (
 				<div className="label">popularity</div>
 			</div>
 		</div>
-	</div>
-);
+	</div>;
 
 export default MovieDetailsView;

@@ -35,7 +35,8 @@ export default function(MovieDisplayComponent) {
 		}
 
 		getMovie(id) {
-			let merged_object, movie = this.selectMovie();
+			let merged_object,
+				movie = this.selectMovie();
 			if (movie !== null) {
 				merged_object = this.mergeObjectWithState(movie);
 				this.setState(merged_object);
@@ -43,24 +44,10 @@ export default function(MovieDisplayComponent) {
 			HttpWrapper.getMovieDetails(id)
 				.then(response => {
 					merged_object = this.mergeObjectWithState(response.data);
+					merged_object.loaded = true;
 					this.setState(merged_object);
-					this.setLinkToIMDB(
-						merged_object.title,
-						merged_object.release_date
-					);
 				})
 				.catch(() => (document.location.hash = "/not-found"));
-		}
-
-		setLinkToIMDB(title, date) {
-			HttpWrapper.getLinkToIMDB(title, date).then(response => {
-				response.data.hasOwnProperty("imdbID")
-					? this.setState({
-							imdb_id: response.data.imdbID,
-							loaded: true,
-						})
-					: this.setState({ loaded: true });
-			}).catch((err) => this.setState({ loaded: true }))
 		}
 
 		mergeObjectWithState(obj) {
